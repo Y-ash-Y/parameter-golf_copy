@@ -939,7 +939,7 @@ def main() -> None:
     device = torch.device("cuda", local_rank)
     torch.cuda.set_device(device)
     if distributed:
-        dist.init_process_group(backend="gloo", device_id=device)
+        dist.init_process_group(backend= "nccl", device_id=device)
         dist.barrier()
     master_process = rank == 0
 
